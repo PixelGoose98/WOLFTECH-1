@@ -21,6 +21,8 @@ struct Sprite
   double y;
   int texture;
   bool isEnemy;
+  int health;
+  int deadTexture;
 };
 
 #define numSprites 20
@@ -29,31 +31,17 @@ bool spriteAlive[numSprites];
 
 Sprite sprite[numSprites] =
 {
-  {20.5, 11.5, 10, false}, //green light in front of playerstart
+
+  //NOT ALL THESE SPRITES ARE VISIBLE IN THE MAP I HAVE MADE AS THEY ARE OUT OF BOUNDS, ONLY 1 OR 2
   //green lights in every room
-  {18.5,4.5, 10, false},
-  {10.0,4.5, 10, false},
-  {10.0,12.5,10, false},
-  {3.5, 6.5, 10, false},
-  {3.5, 20.5,10, false},
-  {3.5, 14.5,10, false},
-  {14.5,20.5,10, false},
+  {3.5, 6.5, 10, false, 20, 10},
 
-  //row of pillars in front of wall: fisheye test
-  {18.5, 10.5, 9, false},
-  {18.5, 11.5, 9, false},
-  {18.5, 12.5, 9, false},
-  {5.5, 5.5, 11, true},
-
+  {5.5, 5.5, 11, true, 20, 12},
+{5.5, 8, 11, true, 20, 12},
+{8, 8, 13, true, 20, 14},
   //some barrels around the map
-  {21.5, 1.5, 8, false},
-  {15.5, 1.5, 8, false},
-  {16.0, 1.8, 8, false},
-  {16.2, 1.2, 8, false},
-  {3.5,  2.5, 8, false},
-  {9.5, 15.5, 8, false},
-  {10.0, 15.1,8, false},
-  {10.5, 15.8,8, false},
+  {3.5,  2.5, 8, false, 20, 8},
+  {9.5, 15.5, 8, false, 20, 8},
 };
 
 Uint32 buffer[screenHeight][screenWidth]; // y-coordinate first because it works per scanline
@@ -95,7 +83,7 @@ int main(int /*argc*/, char */*argv*/[])
   double time = 0; //time of current frame
   double oldTime = 0; //time of previous frame
 
-  std::vector<Uint32> texture[12];
+  std::vector<Uint32> texture[15];
   for(int i = 0; i < 11; i++) texture[i].resize(texWidth * texHeight);
 
   screen(screenWidth,screenHeight, 0, "Raycaster");
@@ -104,7 +92,7 @@ int main(int /*argc*/, char */*argv*/[])
 
 
 
-  //load some textures - REMEMBER TO CHANGE ARRAY LENGTH ^ it has to be one longer than the actuall amount of loaded images
+  //load some textures - REMEMBER TO CHANGE ARRAY LENGTH ^ it has to be one longer than the actual amount of loaded images
   unsigned long tw, th, error = 0;
   error |= loadImage(texture[0], tw, th, "pics/eagle.png");
   error |= loadImage(texture[1], tw, th, "pics/redbrick.png");
@@ -121,6 +109,9 @@ int main(int /*argc*/, char */*argv*/[])
   error |= loadImage(texture[9], tw, th, "pics/pillar.png");
   error |= loadImage(texture[10], tw, th, "pics/greenlight.png");
   error |= loadImage(texture[11], tw, th, "pics/ENEMY.png");
+  error |= loadImage(texture[12], tw, th, "pics/ENEMYDEAD.png");
+  error |= loadImage(texture[13], tw, th, "pics/BOX.png");
+  error |= loadImage(texture[14], tw, th, "pics/b.png");
   if(error) { std::cout << "error loading images" << std::endl; return 1; }
 
   const double moveSpeed = 0.05; // adjust for speed
@@ -363,7 +354,7 @@ if (deltaX != 0) {
     for(int i = 0; i < numSprites; i++)
     {
       int sprIdx = spriteOrder[i];
-      if (!spriteAlive[sprIdx]) continue; // skip if dead
+      if (!spriteAlive[sprIdx]) sprite[sprIdx].texture = sprite[sprIdx].deadTexture; // skip if dead
 
       double spriteX = sprite[sprIdx].x - posX;
       double spriteY = sprite[sprIdx].y - posY;
@@ -509,8 +500,12 @@ if (mousePressed(SDL_BUTTON_LEFT)) {
     }
 
     if (target != -1) {
-        spriteAlive[target] = false;
-        std::cout << "Hit enemy #" << target << std::endl;
+        sprite[target].health--;
+        if (sprite[target].health <= 0)
+        {
+          spriteAlive[target] = false;
+          std::cout << "Hit enemy #" << target << std::endl;
+        }
     }
 }
     //move backwards if no wall behind you
