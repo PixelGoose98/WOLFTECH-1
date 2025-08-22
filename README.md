@@ -1,6 +1,14 @@
 # WOLFTECH-1
 (v0.0.1) a raycaster game engine with basic shooting , textures and sprites a crosshair, a map editor all inspired by wolfenstein3d
 
+# COMPILATION
+  1. THE ENGINE REQUIRES SDL 1.2, i know its old as shit but.... fuck you.
+  2. THE MAP EDITOR USES RAYLIB 5.5.
+
+  just run the makefiles for the game and the map editor
+
+  make and then make run.
+
 # USAGE
   unfortunatelly most of the code is crammed into main.cpp, sorry about that but next version im splitting the files,
   for now the game only loads map.h no other maps its hard coded. to make or edit a map, you can use the map editor
@@ -9,12 +17,14 @@
 
   again there isnt really a propper documentation FOR NOW. i will be fixing that soon.
 
-  REMEMBER, whenever you make a new map.h, you need to re compile the main.cpp.
+  REMEMBER, whenever you make a new map.h, you need to re compile the main.cpp. USE THE MAP EDITOR IN A TERMINAL.
+  IT WILL ASK YOU FOR INPUTS THERE, ONLY THEN DOES THE GUI MODE OPEN.
 
-# COMPILATION
-  THIS REQUIRES SDL 1.2, i know its old as shit but.... fuck you.
+  stuff like: Enter input map filename (or press Enter to create new): 
+              Enter output map filename (default: map.h): 
+              Enter MAX MAP SIZE: 
 
-  just run the makefiles for the game and the map editor
+  TO EXPORT THE MAPS PRESS E, TO SET PLAYER POSITIONS RIGHT CLICK ON A SQUARE AND TO PLACE WALLS, PRESS THE NUMBER KEYS 0 - 8 FOR A WALL. 0 IS NOTHING.
 
-  make and then make run.
+
 
