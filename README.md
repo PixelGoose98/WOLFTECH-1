@@ -26,5 +26,14 @@
 
   TO EXPORT THE MAPS PRESS E, TO SET PLAYER POSITIONS RIGHT CLICK ON A SQUARE AND TO PLACE WALLS, PRESS THE NUMBER KEYS 0 - 8 FOR A WALL. 0 IS NOTHING.
 
+# things to add
+A FUCKING FULL SCREEN GOD DAMN IT.
+oh and a propper health system and enemy health system but u can do that if you want, ui shouldent be TOO hard but just in case i will make a header fo it for the next version
+
+# controlls
+WASD - MOVEMENT
+LEFT MB - INSTA KILL SHOOT (havent implemented a proper enemy health system yet haha but it shouldent be too hard for you to do, dont worry i will do it tho anyway)
+MOUSE LOOK - LOOK LEFT TO RIGHT
+
 
 
