@@ -28,7 +28,7 @@
 
 # things to add
 A FUCKING FULL SCREEN GOD DAMN IT.
-oh and a propper health system and enemy health system but u can do that if you want, ui shouldent be TOO hard but just in case i will make a header fo it for the next version
+oh and a propper player health system but u can do that if you want, ui shouldent be TOO hard but just in case i will make a header fo it for the next version
 multiple weapons and weapon switching.
 and enemies that can shoot back, again most of these things i have listed you can do if you know SDL 1.2, i will be implementing these things later though of course 
 
