@@ -1,6 +1,10 @@
 # WOLFTECH-1
 (v0.0.1) a raycaster game engine with basic shooting , textures and sprites a crosshair, a map editor all inspired by wolfenstein3d
 
+<img width="657" height="533" alt="image" src="https://github.com/user-attachments/assets/fe4908be-fb4e-4bd7-9305-7c53c5c346ef" />
+<img width="657" height="533" alt="image" src="https://github.com/user-attachments/assets/d4787e92-0dfe-4d07-9ad4-aa3adc2b6fab" />
+
+
 # COMPILATION
   1. THE ENGINE REQUIRES SDL 1.2, i know its old as shit but.... fuck you.
   2. THE MAP EDITOR USES RAYLIB 5.5.
